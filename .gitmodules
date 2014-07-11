@@ -1,3 +1,6 @@
 [submodule "vender/inspect.lua"]
 	path = vender/inspect.lua
 	url = git@github.com:kikito/inspect.lua.git
+[submodule "vender/ansicolors.lua"]
+	path = vender/ansicolors.lua
+	url = git@github.com:kikito/ansicolors.lua.git
