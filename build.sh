@@ -5,10 +5,14 @@
 # ./thisscript.sh path_to_process
 ###
 
+rm -rf ./build
+
+cp -R ./lib ./build
+
 CURRENT_PATH=`pwd`
 echo $CURRENT_PATH
 
-find $1 -type l | tr \\n \\0 | while read -d "" i
+find ./build -type l | tr \\n \\0 | while read -d "" i
 do
   echo "processing: $i"
   cd `dirname $i`
@@ -16,7 +20,8 @@ do
   #echo "basename: $BASENAME"
   DESTINATION="$(readlink ./$BASENAME)"
   echo "dest: $DESTINATION"
-  rsync $DESTINATION $BASENAME
+  rm -rf $BASENAME
+  cp -fvR $DESTINATION $BASENAME
   cd $CURRENT_PATH
 done
 
